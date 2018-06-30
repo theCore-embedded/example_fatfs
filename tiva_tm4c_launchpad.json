@@ -1,0 +1,108 @@
+{
+    "menu-platform": {
+        "config-name": "TM4C",
+        "menu-tm4c": {
+            "config-device": "TM4C123GH6PM",
+            "config-console": "UART0",
+            "menu-timer": {
+                "config-source": "systick",
+                "config-freq": "100",
+                "config-owner": "user"
+            },
+            "menu-uart": {
+                "table-uart": [
+                    "UART0"
+                ],
+                "menu-UART0": {
+                    "config-baud": 115200
+                }
+            },
+            "menu-pinconfig": {
+                "table-pins": [
+                    "PA0",
+                    "PA1",
+                    "PD0",
+                    "PD3",
+                    "PD2",
+                    "PD1"
+                ],
+                "menu-PA0": {
+                    "config-direction": "af",
+                    "config-type": "standard",
+                    "config-strength": "6mA",
+                    "config-afsel": "U0Rx"
+                },
+                "menu-PA1": {
+                    "config-direction": "af",
+                    "config-type": "standard",
+                    "config-strength": "6mA",
+                    "config-afsel": "U0Tx"
+                },
+                "menu-PD0": {
+                    "config-direction": "af",
+                    "config-type": "standard",
+                    "config-strength": "6mA",
+                    "config-afsel": "SSI3Clk"
+                },
+                "menu-PD3": {
+                    "config-direction": "af",
+                    "config-type": "standard",
+                    "config-strength": "6mA",
+                    "config-afsel": "SSI3Tx"
+                },
+                "menu-PD2": {
+                    "config-direction": "af",
+                    "config-type": "push",
+                    "config-strength": "6mA",
+                    "config-comment": "MISO pin, push (pull-up), as required by SD card",
+                    "config-afsel": "SSI3Rx"
+                },
+                "menu-PD1": {
+                    "config-direction": "output",
+                    "config-type": "standard",
+                    "config-strength": "6mA",
+                    "config-comment": "SSI3 CS pin"
+                }
+            },
+            "menu-spi": {
+                "table-spi": [
+                    "SSI3"
+                ],
+                "menu-SSI3": {
+                    "config-type": "master",
+                    "config-cpol": 0,
+                    "config-cpha": 0,
+                    "config-clk-div": "8"
+                }
+            }
+        }
+    },
+    "menu-dev": {
+        "menu-sdspi": {
+            "table-sdspi-dev": [
+                "sdspi_driver"
+            ],
+            "menu-sdspi_driver": {
+                "config-spi": "SSI3",
+                "config-cs": "PD1"
+            }
+        }
+    },
+    "menu-lib": {
+        "menu-filesystem": {
+            "menu-fatfs": {
+                "table-fatfs": [
+                    "fatfs_driver"
+                ],
+                "config-readonly": true,
+                "config-lowercase": true,
+                "config-enable_seek": false,
+                "menu-fatfs_driver": {
+                    "config-mountpoint": "sdcard",
+                    "config-block": "sdspi_driver"
+                }
+            },
+            "config-enable": true
+        }
+    }
+}

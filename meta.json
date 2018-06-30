@@ -1,0 +1,20 @@
+{
+    "name": "FATFS and SDSPI example",
+    "targets": {
+        "tiva_tm4c_launchpad": {
+            "config": "tiva_tm4c_launchpad.json",
+            "description": "TM4C123G LaunchPad Evaluation Kit",
+            "toolchain": "arm-cm4-gnu.cmake",
+
+            "debuggers": { 
+                "openocd": {
+                    "icdi": {
+                        "file": "board/ek-lm4f120xl.cfg",
+                        "flash_address": "0x0",
+                        "help": "OpenOCD configuration for ICDI (in-circuit debug interface) present in Launchpad"
+                    }
+                }
+            }
+        }
+    }
+}
