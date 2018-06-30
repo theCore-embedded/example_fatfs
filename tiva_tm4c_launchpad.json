@@ -101,7 +101,8 @@
                     "config-mountpoint": "sdcard",
                     "config-block": "sdspi_driver"
                 }
-            }
+            },
+            "config-enable": true
         }
     }
 }
